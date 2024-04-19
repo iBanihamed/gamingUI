@@ -1,9 +1,8 @@
 import os
-import subprocess
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
-from playsound import playsound
+from pygame import mixer
 
 class GameLauncherApp:
     def __init__(self, root):
@@ -100,6 +99,16 @@ class GameLauncherApp:
     def select_game(self, index):
         self.selected_game_index = index
         self.display_games()
+        selected_game = self.games[self.selected_game_index].split('/')[-1].split('.')[0]
+        sound_byte = f'./assets/sounds/{selected_game}.mp3'
+        self.play_sound(sound_byte)
+
+    def play_sound(self, sound):
+        # Load the sound file
+        mixer.init()
+        mixer.music.load(sound)
+        mixer.music.play()
+
 
     def launch_game(self):
         if self.selected_game_index is not None:
