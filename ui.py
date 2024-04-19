@@ -1,5 +1,6 @@
 import os
 import tkinter as tk
+import subprocess
 from tkinter import filedialog
 from PIL import Image, ImageTk
 from pygame import mixer
@@ -112,6 +113,7 @@ class GameLauncherApp:
 
     def launch_game(self):
         if self.selected_game_index is not None:
+            mixer.music.stop()
             gamePath = self.games[self.selected_game_index]
             gameName = gamePath.split('/')[-1].split('.')[0]
             print("Launching game: ", gameName)

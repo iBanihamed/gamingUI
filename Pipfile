@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pygame = "*"
 pillow = "*"
+subprocess = "*"
 
 [dev-packages]
 
